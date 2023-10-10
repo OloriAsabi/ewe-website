@@ -14,8 +14,8 @@ import {
 import { CiMenuKebab } from 'react-icons/ci';
 
 
-const PostMenu: React.FC<{ postId: number }> = ({ postId }) => {
-  const handleDeletePost = (postId: number) => {
+const PostMenu: React.FC<{ postId: any }> = ({ postId }) => {
+  const handleDeletePost = (postId: any) => {
     console.log("Deleted Post:", postId);
   };
 

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Container,
   Image,
@@ -9,14 +9,13 @@ import {
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { GoVerified } from "react-icons/go";
-import { PostMenu, ShareButton } from "../components";
-import { PostCardProps, Posts, RootState, User } from "../types/interface";
+import { PostMenu } from "../components";
+import { PostCardProps, RootState, User } from "../types/interface";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router";
 import { post } from "../data/data";
 import { selectCurrentUser } from "../api/userSlice";
 import { Link } from "react-router-dom";
-import { FaComment } from "react-icons/fa";
 import PostButtons from "../components/PostButtons";
 import { Helmet } from "react-helmet";
 
@@ -57,7 +56,7 @@ const PostById: React.FC<PostCardProps> = () => {
       <Container>
         <Flex justifyContent="center" alignItems="start" flexDirection={"column"} paddingBottom="20px">
           <Box
-            key={posts.id}
+            key={posts?.id}
             width={{ base: "100%" }}
             mx="auto"
             mb="4"
@@ -78,7 +77,7 @@ const PostById: React.FC<PostCardProps> = () => {
                 >
                   <Link to={`/user/${currentUser.id}`}>{currentUser.username}</Link>
                 </Text>
-                {isAuthenticated && <PostMenu postId={post.id} />}
+                {isAuthenticated && <PostMenu postId={posts?.id} />}
               </Flex>
 
             <Box
@@ -91,8 +90,8 @@ const PostById: React.FC<PostCardProps> = () => {
                 width="100%"
                 height="100%"
                 borderRadius={"10px"}
-                src={posts.image}
-                alt={posts.username}
+                src={posts?.image}
+                alt={posts?.username}
               />
             </Box>
             <Box flex="1" textAlign="start" fontFamily="Inter">
@@ -109,25 +108,30 @@ const PostById: React.FC<PostCardProps> = () => {
                 gap={"20px"}
                 mb={4}
               >
-                {typeof posts.name === "string" ? posts.name : posts.name[language]}
+              {typeof posts?.name === "string"
+                  ? posts?.name // If it's a string, use it directly
+                  : posts?.name['en'] || posts?.name['yo']}
                 <span>
                   <Image
                     objectFit="cover"
                     width="30px"
                     height="30px"
-                    src={posts.icon}
+                    src={posts?.icon}
                     alt={"Category"}
                   />
                 </span>
                 <span>
                   <Icon color={"#fff"} backgroundColor={"#345430"} borderRadius={"10px"}>
-                    {posts.verify ? <GoVerified style={{ color: "#fff", backgroundColor: "#345430" }} fontSize={25} /> : ""}
+                    {posts?.verify ? <GoVerified style={{ color: "#fff", backgroundColor: "#345430" }} fontSize={25} /> : ""}
                   </Icon>
                 </span>
               </Text>
               <Text textAlign="start" fontFamily="Inter" textTransform="capitalize" fontSize="lg" mb={4}>
                 <i>{language === "en" ? "Other Names:  " : "Oruko omiran: "}</i>
-                <span>{typeof posts.otherNames === "string" ? posts.otherNames : posts.otherNames[language]}</span>
+                <span>
+                  {typeof posts?.otherNames === "string"
+                 ? posts?.otherNames 
+                 : posts?.otherNames['en'] || posts?.otherNames['yo']}</span>
               </Text>
               <Text color="#345430" fontSize={"20px"} fontFamily="Inter" fontWeight={800} paddingBottom="10px">
                 {language === "en" ? "Description" : "Apejuwe re:"}
@@ -139,7 +143,9 @@ const PostById: React.FC<PostCardProps> = () => {
               fontSize="lg"
               fontFamily="Inter"
               mb={4}>
-                {typeof posts.description === "string" ? posts.description : posts.description[language]}
+                {typeof posts?.description === "string" 
+                ? posts?.description 
+                : posts?.description['en'] || posts?.description['yo']}
               </Text>
 
               <Text color="#345430" fontSize={"20px"} fontFamily="Inter" fontWeight={800} paddingBottom="10px" paddingTop={"10px"}>
@@ -152,10 +158,14 @@ const PostById: React.FC<PostCardProps> = () => {
               fontSize="lg"
               fontFamily="Inter"
               mb={4}>
-                {typeof posts.uses === "string" ? posts.uses : posts?.uses[language]}
+                {typeof posts?.uses === "string" 
+                ? posts?.uses 
+                : posts?.uses['en'] || posts?.uses['yo']}
               </Text>
               <Box>
-                <PostButtons post={post} />
+              {posts && (
+                    <PostButtons post={posts} />
+                  )}
             </Box>
             </Box>
           </Box>

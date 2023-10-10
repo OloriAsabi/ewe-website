@@ -69,24 +69,8 @@ title: {
       </Text>
       <Box
       textAlign={'center'}>
-    {/* <Button 
-    as={Link} 
-    // to={`/user/${currentUser.id}/create-post`}
-    mt={0}
-    backgroundColor={"#345430"}
-    padding={'20px'}
-    color={"#fff"}
-    variant="solid"
-    borderRadius={"10px"}
-    _hover={{
-        color: "#345430",
-        backgroundColor: "#F7F7F9"
-    }}
-    size="md"
-     >        {language === 'en' ? 'Create Post' : 'Fún wa ní ìwádí kan'}
-     </Button> */}
      <Button
-        onClick={redirectToCreatePost} // Call the redirectToCreatePost function onClick
+        onClick={redirectToCreatePost}
         mt={0}
         backgroundColor={"#345430"}
         padding={'20px'}

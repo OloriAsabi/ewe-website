@@ -18,8 +18,8 @@ const FilterComponent: React.FC<FilterComponentProps> = ({
 }) => {
   const [selectedFilter, setSelectedFilter] = useState<string>("");
 
-  const language = useSelector((state: RootState) => state.language.language);
-  const selectedOption = filterOptions.find((option) => option.type === selectedFilter);
+  // const language = useSelector((state: RootState) => state.language.language);
+  // const selectedOption = filterOptions.find((option) => option.type === selectedFilter);
 
 
   const handleFilterChange = (event: ChangeEvent<HTMLSelectElement>) => {
@@ -47,15 +47,20 @@ const FilterComponent: React.FC<FilterComponentProps> = ({
       >
         {filterOptions.map((option) => (
           <option key={option.id} 
-          value={typeof option.type === "string" ? option.type : option.type[language]}>
-            {typeof option.type === "string" ? option.type : option.type[language]}
+          value={typeof option.type === "string" 
+          ? option.type
+          : option.type['en'] || option.type['yo']}>
+            {typeof option.type === "string" 
+            ? option.type 
+            : option.type['en'] || option.type['yo']}
           </option>
         ))}
       </Select>
       {selectedFilter ? (
       <Box marginLeft={5}>
         <Image
-          src={filterOptions.find((option) => option.type[language] === selectedFilter)?.icon}
+          src={filterOptions.find((option) => 
+            option.type['en'] || option.type['yo']  === selectedFilter)?.icon}
           boxSize="60px"
         />
         </Box>

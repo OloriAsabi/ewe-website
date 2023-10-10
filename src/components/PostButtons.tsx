@@ -21,7 +21,7 @@ interface PostButtonsProps {
   };
 }
 
-const PostButtons: React.FC<PostButtonsProps> = ({ post }) => {
+const PostButtons: React.FC<PostButtonsProps> = ({ post = { likes: 0, dislikes: 0, id: 0 } }) => {
   const [isShareModalOpen, setIsShareModalOpen] = useState<Record<number, boolean>>({});
 
   const toggleShareModal = (postId: number) => {

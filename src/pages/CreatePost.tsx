@@ -177,14 +177,14 @@ const CreatePost = () => {
           height={"60px"}
         >
           {filterOptions.map((option) => (
-            <option key={option.id} value={typeof option.type === "string" ? option.type : option.type[language]}>
+            <option key={option.id} value={typeof option.type === "string" ? option.type :  option.type['en'] ||  option.type['yo'] }>
               <Flex align="center" textTransform={'capitalize'} justifyContent={'space-between'}>
                 <Image
                   src={option.icon}
                   boxSize="100px"
                   p={10}
                 />
-                {typeof option.type === "string" ? option.type : option.type[language]}
+                {typeof option.type === "string" ? option.type : option.type['en'] ||  option.type['yo']  }
               </Flex>
             </option>
           ))}
