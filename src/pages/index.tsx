@@ -1,0 +1,17 @@
+export { default as Home } from './Home';
+export { default as ErrorPage } from './404';
+export { default as CreatePost } from './CreatePost';
+export { default as About } from "./About"
+export { default as Contact } from "./Contact"
+export { default as Donate } from "./Donate"
+export { default as Login } from "./Login"
+export { default as SignUp } from "./SignUp"
+export { default as UserProfile } from "./UserProfile"
+export { default as ResetPassword } from "./ResetPassword"
+export { default as ForgotPassword } from "./ForgotPassword"
+export { default as Verfication } from "./Verification"
+export { default as UserProfileSettings } from "./UserProfileSettings"
+export { default as Project } from "./Project"
+export { default as Posts } from "./Posts"
+export { default as PostById } from "./PostById"
+export { default as Shop } from "./Shop"

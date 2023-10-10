@@ -1,0 +1,54 @@
+.logo{
+    width: 100px !important;
+    height: 100px !important;
+    background-size: 100%;
+    object-fit: cover;
+  }
+  /* styles.css */
+
+/* Add styling for the sticky navigation bar */
+.sticky-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  box-shadow: none;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000; /* Adjust z-index as needed */
+}
+
+/* Style for the navigation items */
+.sticky-navbar a {
+  text-decoration: none;
+  font-size: 25px;
+  font-weight: 900;
+  color: #345430;
+  cursor: pointer;
+  font-family: 'Fredoka', sans-serif;
+  background-color: transparent;
+  padding: 0 10px;
+}
+
+/* Style for active navigation item */
+.sticky-navbar a.active {
+  background-color: #E0EAE0;
+}
+.PhoneInputCountrySelect {
+width: 100px;
+height: 50px;
+border-radius: 10px;
+}
+.PhoneInputCountry{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+.PhoneInputInput{
+  width: 100%;
+  border-radius: 10px;
+}
