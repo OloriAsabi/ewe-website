@@ -96,7 +96,9 @@ import PostMenu from "./PostMenu";
                   fontWeight={600}
                   fontSize={{ base: "20px", md: "20px", lg: "25px" }}
                 >
+                 {isAuthenticated ?  
                   <Link to={`/user/${currentUser.id}`}>{currentUser.username}</Link>
+                  : <Link to={'/login'}/>}
                 </Text>
                 {isAuthenticated && <PostMenu postId={post.id} />}
               </Flex>

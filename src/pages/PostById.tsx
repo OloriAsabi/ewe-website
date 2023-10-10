@@ -75,7 +75,9 @@ const PostById: React.FC<PostCardProps> = () => {
                   fontWeight={600}
                   fontSize={{ base: "20px", md: "20px", lg: "25px" }}
                 >
+                      {isAuthenticated ?  
                   <Link to={`/user/${currentUser.id}`}>{currentUser.username}</Link>
+                  : <Link to={'/login'}/>}
                 </Text>
                 {isAuthenticated && <PostMenu postId={posts?.id} />}
               </Flex>

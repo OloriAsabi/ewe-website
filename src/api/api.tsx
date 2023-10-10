@@ -17,8 +17,8 @@ const ApiCall = () => {
         if (accessToken) {
           headers.set('Authorization', `Bearer ${accessToken}`);
         }
-        // headers.set('Content-Type', 'application/json');
-        // headers.set('Access-Control-Allow-Origin', '*');
+        headers.set('Content-Type', 'application/json');
+        headers.set('Access-Control-Allow-Origin', '*');
       },
     }),
     tagTypes: ['SignIn', 
@@ -40,7 +40,10 @@ const ApiCall = () => {
           body: credentials,
           providesTags: ['SignIn'],
           defer: true, 
-        })
+        }),
+        onQueryStarted: (body) => {
+          console.log('Sign In Request Body:', body);
+        },
       }),
       signUp: builder.mutation({
         query: (userInfo) => ({
@@ -54,26 +57,7 @@ const ApiCall = () => {
           console.log('Sign Up Request Body:', body);
         },
       }),
-      // logout: builder.query({
-      //   query: () => 'logout',
-      //   providesTags: ['Logout'],
-      // }),
-      // getGoogleSignIn: builder.query({
-      //   query: () => ({
-      //     url: 'google/signin',
-      //     providesTags: ['Google'],
-      //     defer: true, 
-      //     method: 'GET',
-      //   })
-      // }),          
-      // getFaceBookSignIn: builder.query({
-      //   query: () => ({
-      //     url: 'facebook/signin',
-      //     providesTags: ['Facebook'],
-      //     defer: true, 
-      //     method: 'GET',
-      //   })
-      // }),
+
       resetPassword: builder.mutation({
         query: (resetInfo) => ({
           url: 'resetpassword',

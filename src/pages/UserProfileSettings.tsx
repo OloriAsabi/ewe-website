@@ -159,6 +159,21 @@ const UserProfileSettings = () => {
                             trigger("phoneNumber");
                          }}
                             />
+                         <FormSelectOption
+                            name="role"
+                            label="Change Role"
+                            control={control}
+                            register={register}
+                            rules={{ required: "Please select a Role" }}
+                            errors={errors}
+                            options={[
+                                { value: "user", label: "User" },
+                                { value: "specialist", label: "Specialist" }
+                            ]}
+                            onKeyUp={() => {
+                              trigger("role");
+                           }}
+                             />
                             <FormSelectOption
                             name="field"
                             label="Field"
@@ -180,21 +195,6 @@ const UserProfileSettings = () => {
                               trigger("field");
                            }}
                             />
-                                     {/* <FormSelectOption
-                            name="role"
-                            label="Role"
-                            control={control}
-                            register={register}
-                            rules={{ required: "Please select a Role" }}
-                            errors={errors}
-                            options={[
-                                { value: "user", label: "User" },
-                                { value: "specialist", label: "Specialist" }
-                            ]}
-                            onKeyUp={() => {
-                              trigger("role");
-                           }}
-                             /> */}
 
             <Button
               type="submit"
