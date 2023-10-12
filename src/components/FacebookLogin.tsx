@@ -16,7 +16,9 @@ const FacebookLogin: React.FC<FacebookLoginButtonProps> = ({ text }) => {
   });
 
   // Call the hook directly within the component
-  const { data, isSuccess } = useGetFaceBookSignInQuery({}, { skip: true });
+  const { data, isSuccess } = useGetFaceBookSignInQuery({});
+
+  console.log("Sign In with Facebook : ", isSuccess);
 
   const handleFacebookLoginClick = async () => {
     try {

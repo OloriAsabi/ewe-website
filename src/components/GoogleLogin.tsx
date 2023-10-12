@@ -13,13 +13,14 @@ interface GoogleLoginProps {
 }
 
 const GoogleLogin: React.FC<GoogleLoginProps> = ({ text }) => {
-  const { data, isSuccess } = useGetGoogleSignInQuery({}, { skip: true });
+  const { data, isSuccess } = useGetGoogleSignInQuery({});
 
   const [showToast, setShowToast] = useState(false);
   const [toastConfig, setToastConfig] = useState({
     description: '',
     status: '',
   });
+  
 
   const handleGoogleLoginClick = async () => {
     try {
